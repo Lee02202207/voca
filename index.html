@@ -1,85 +1,158 @@
 <!DOCTYPE html>
+
 <html lang="ko" class="h-full">
+
 <head>
+
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>NexusLexicon - Advanced Desktop Vocabulary Studio</title>
+
     <!-- Tailwind CSS CDN -->
+
     <script src="https://cdn.tailwindcss.com"></script>
+
     <script>
+
         tailwind.config = {
+
             darkMode: 'class',
+
             theme: {
+
                 extend: {
+
                     colors: {
+
                         brand: {
+
                             50: '#eff6ff',
+
                             100: '#dbeafe',
+
                             500: '#3b82f6',
+
                             600: '#2563eb',
+
                             700: '#1d4ed8',
+
                         }
+
                     }
+
                 }
+
             }
+
         }
+
     </script>
+
     <!-- Font Awesome for Icons -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <!-- Google Fonts Inter -->
+
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
     <style>
+
         body { font-family: 'Inter', sans-serif; }
+
         .perspective-1000 { perspective: 1000px; }
+
         .transform-style-3d { transform-style: preserve-3d; }
+
         .backface-hidden { backface-visibility: hidden; }
+
         .rotate-y-180 { transform: rotateY(180deg); }
+
     </style>
+
 </head>
+
 <body class="h-full bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-300">
 
+
+
     <div id="app" class="flex h-screen overflow-hidden">
+
         
+
         <!-- Sidebar Navigation -->
+
         <aside class="w-64 bg-white dark:bg-slate-800 border-r border-slate-200 dark:border-slate-700 flex flex-col justify-between z-10">
+
             <div>
+
                 <!-- App Logo & Branding -->
-<div class="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-700/60">
-    <div class="flex items-center space-x-3">
-        <!-- 기존 아이콘 대신 이미지 태그 사용 -->
-        <div id="sidebar-logo-bg" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center p-1.5 shadow-md overflow-hidden">
-            <img src="">
-        </div>
-        <div>
-            <h1 class="font-bold text-base tracking-tight">NexusLexicon</h1><div id="sidebar-logo-bg" class="w-10 h-10 rounded-xl bg-white dark:bg-slate-700 flex items-center justify-center p-1.5 shadow-md overflow-hidden">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Monash_University_logo.svg" alt="Monash Logo" class="w-full h-full object-contain">
-</div>
-            <p class="text-xs text-slate-400 dark:text-slate-500">Desktop Vocab Studio</p>
-        </div>
-    </div>
-</div>
+
+                <div class="h-16 flex items-center px-6 border-b border-slate-100 dark:border-slate-700/60">
+
+                    <div class="flex items-center space-x-3">
+
+                        <div id="sidebar-logo-bg" class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-500 to-indigo-400 flex items-center justify-center text-white shadow-md">
+
+                            <i class="fa-solid fa-book-bookmark text-lg"></i>
+
+                        </div>
+
+                        <div>
+
+                            <h1 class="font-bold text-base tracking-tight">NexusLexicon</h1>
+
+                            <p class="text-xs text-slate-400 dark:text-slate-500">Desktop Vocab Studio</p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
 
                 <!-- Navigation Links -->
-                <nav class="p-4 space-y-1.5">
-                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all shadow-sm">
-                        <i class="fa-solid fa-grid-2 text-base w-5"></i>
-                        <span>단어장 대시보드</span>
-                    </button>
-                    <button onclick="switchTab('cards')" id="nav-cards" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
-                        <i class="fa-solid fa-clone text-base w-5"></i>
-                        <span>플래시카드 학습</span>
-                    </button>
-                    <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
-                        <i class="fa-solid fa-brain text-base w-5"></i>
-                        <span>퀴즈 모드</span>
-                    </button>
-                    <button onclick="openCategoryModal()" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
-                        <i class="fa-solid fa-folder-tree text-base w-5"></i>
-                        <span>카테고리 및 색상</span>
-                    </button>
-                </nav>
-            </div>
 
+                <nav class="p-4 space-y-1.5">
+
+                    <button onclick="switchTab('dashboard')" id="nav-dashboard" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all shadow-sm">
+
+                        <i class="fa-solid fa-grid-2 text-base w-5"></i>
+
+                        <span>단어장 대시보드</span>
+
+                    </button>
+
+                    <button onclick="switchTab('cards')" id="nav-cards" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+
+                        <i class="fa-solid fa-clone text-base w-5"></i>
+
+                        <span>플래시카드 학습</span>
+
+                    </button>
+
+                    <button onclick="switchTab('quiz')" id="nav-quiz" class="nav-btn w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+
+                        <i class="fa-solid fa-brain text-base w-5"></i>
+
+                        <span>퀴즈 모드</span>
+
+                    </button>
+
+                    <button onclick="openCategoryModal()" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium transition-all text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-700/50">
+
+                        <i class="fa-solid fa-folder-tree text-base w-5"></i>
+
+                        <span>카테고리 및 색상</span>
+
+                    </button>
+
+                </nav>
+
+            </div>
             <!-- Sidebar Footer & Theme Toggle -->
             <div class="p-4 border-t border-slate-100 dark:border-slate-700/60 space-y-3">
                 <div class="flex items-center justify-between px-2">
